@@ -2,7 +2,11 @@
 class Order < OpenStruct
 
   def self.find(id)
-    new(FIXTURE)
+    new(FIXTURE).tap { |o| o.id = id }
+  end
+
+  def products
+    Product.find_by_order_id(id)
   end
 
   FIXTURE = {
@@ -70,10 +74,6 @@ class Order < OpenStruct
       :country_iso2 => "US",
       :phone => "5555556789",
       :email => "bug@bunny.com"
-    },
-    :products => {
-      :url => "https:\/\/store-12345.mybigcommerce.com\/api\/v2\/orders\/100\/products.json",
-      :resource => "\/orders\/100\/products"
     },
     :shipping_addresses => {
       :url => "https:\/\/store-12345.mybigcommerce.com\/api\/v2\/orders\/100\/shippingaddresses.json",
