@@ -42,6 +42,7 @@ GEM
       xpath (~> 1.0.0)
     childprocess (0.3.8)
       ffi (~> 1.0, >= 1.0.11)
+    chunky_png (1.2.7)
     coderay (1.0.9)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -82,6 +83,8 @@ GEM
     multi_json (1.6.1)
     nokogiri (1.5.6)
     polyglot (0.3.3)
+    qrencoder (1.4.1)
+      chunky_png (~> 1.1)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
     rack (1.4.5)
@@ -171,6 +174,7 @@ DEPENDENCIES
   factory_girl_rails
   haml-rails
   libv8
+  qrencoder
   quiet_assets
   rails (= 3.2.12)
   rspec-rails

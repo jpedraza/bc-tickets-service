@@ -12,9 +12,11 @@ group :assets do
   gem 'therubyracer', :platform => :ruby, :require => 'v8'
 end
 
+# Ticket Generation
 gem 'haml-rails'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf'
+gem 'qrencoder' # requires qrencode with brew/apt
 
 group :development do
   gem 'quiet_assets'

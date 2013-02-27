@@ -11,6 +11,9 @@ db/*.sqlite3
 /log/*
 /tmp/*
 
+# QR Codes
+/public/codes/*.png
+
 # Various artifacts
 **.war
 *.rbc
