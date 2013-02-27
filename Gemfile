@@ -13,6 +13,8 @@ group :assets do
 end
 
 gem 'haml-rails'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf'
 
 group :development do
   gem 'quiet_assets'
