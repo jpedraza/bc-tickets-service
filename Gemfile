@@ -16,7 +16,7 @@ end
 gem 'haml-rails'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf'
-gem 'qrencoder' # requires qrencode with brew/apt
+gem 'qrencoder' # requires 'brew install qrencode' or 'apt-get install libqrencode-dev'
 
 group :development do
   gem 'quiet_assets'
