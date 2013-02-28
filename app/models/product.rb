@@ -17,9 +17,9 @@ class Product < OpenStruct
 
   def name
     @name ||= [
-      "Foo Fighters, Acer Arena",
-      "Smashing Pumpkins, Bargain Bin",
-      "Garbage, Everywhere"
+      "Foo Fighters (Acer Arena, 4 July @ 7pm)",
+      "Smashing Pumpkins (The Metro, 4 July @ 7pm)",
+      "Tool (Sydney Convention Centre, 9 March @ 9pm)"
     ].sample
   end
 

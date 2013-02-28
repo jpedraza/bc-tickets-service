@@ -1,15 +1,76 @@
-:css
+:scss
+  $light: #ccc;
+
+  body {
+    font-family: 'Helvetica LT', 'Georgia', sans-serif;
+    margin: 0 20px;
+    color: #222;
+  }
+
   h1 {
-    page-break-before: always; color: navy;
+    font-family: 'League Gothic';
+    font-weight: normal;
+    font-size: 3em;
+    color: #000;
+    padding-bottom: 0; margin-bottom: 20px;
+    text-align: justify;
+
+    page-break-before: always;
+    &:first-child {
+      page-break-before: avoid;
+    }
   }
-  h1:first-child {
-    page-break-before: avoid;
+  section.details {
+    img.code {
+      border: 3px solid $light;
+      float: left;
+    }
+    div {
+      float: left;
+      padding-left: 1em;
+      h2 {
+        font-size: 36px;
+        padding: 11px 0 10px 0; margin: 0;
+      }
+      p {
+        padding: 0 0 8px; margin: 0;
+        font-size: 16px;
+        &.code {
+          text-transform: uppercase;
+          color: $light;
+          font-weight: bold;
+          word-spacing: -0.15em;
+          /* letter-spacing is no good with PDF generation. */
+        }
+      }
+    }
+    .map {
+      float: right;
+      border: 1px solid $light;
+    }
   }
+  section.notes {
+    h2 { font-size: 18px; padding-bottom: 0; margin-top: 26px; margin-bottom: 0; }
+    p {
+      margin: 5px 0;
+      font-size: 14px;
+      text-align: justify;
+    }
+  }
+
+
 
 - @order.products.each do |product|
   %h1 #{product.name}
-  %h2 #{@order.billing_address[:first_name]} #{@order.billing_address[:last_name]}
-  %p This is a big test.
-  %img{:src => product.barcode_image.to_data_url}
-  = map_for('Acer Arena, Sydney')
-  = @order
+  %section.details
+    %img.code{:src => product.barcode_image.to_data_url}
+    %div
+      %h2 #{@order.billing_address[:first_name]} #{@order.billing_address[:last_name]}
+      %p.tickets #{pluralize(product.quantity, "Ticket")} (#{number_to_currency(@order.total_inc_tax)}, incl. #{number_to_currency(@order.total_tax)} GST)
+      %p.code #{product.code.gsub('', ' ').html_safe}
+    = map_for('Sandrigham Hotel, 387 King St Newtown NSW 2042 Australia', 120, 15)
+    %br{:style => 'clear:both;'}
+  %section.notes
+    %h2 Please Remember
+    %p Keep your order information and tickets in a safe place (as you would with your keys or wallet). Never forward or share your login credentials or tickets with anyone.
+    %p If you wish to make changes to your registration information, please contact our Client Services Department within Australia (1 555 555 5555), or outside Australia (+612 5592 5555).
